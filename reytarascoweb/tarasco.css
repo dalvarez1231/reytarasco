@@ -1,0 +1,322 @@
+@charset "UTF-8";
+/* CSS Document */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #333;
+  color: #fff;
+  height: 100vh;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  /* CSS Smooth Scroll */
+  overflow-y: scroll; 
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.lead {
+  font-size: 1.5rem;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0,0.7);
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.navbar ul li {
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #f4f4f4;
+}
+
+.navbar ul li a:hover {
+  color: skyblue;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+ 
+  /* Scroll Snap */
+  scroll-snap-align: center;
+}
+
+section h1 {
+  font-size: 4rem;
+}
+
+/* Section Images */
+section#reytarasco {
+  
+  background: url("rey1.jpg") no-repeat center center/cover;;
+  background-size: 100% 100%;
+}
+
+section#Music {
+  background: url("wavemusic.png") no-repeat center center/cover;;
+}
+section#Music h1{
+	padding-top: 50px;
+	
+}
+
+section#Contact {
+  background: url("contactback.png") no-repeat center center/cover;;
+}
+section#Contact h1 {
+  padding-bottom: 250px;
+}
+
+section#About {
+  background: url("wave.png") no-repeat center center/cover;;
+}
+section#About p {
+	font-size: 5 ;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+/*--------------------*/
+
+.player {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 320px;
+	height: 480px;
+	overflow: hidden;
+}
+.player .main {
+	width: 100%;
+	height: 100%;
+	background: #222;
+	transition:all 500ms ease-in-out;
+}
+.player .main .thumbnail img {
+	width: 100%;
+}
+.player .main .seekbar {
+	margin-top: -15px;
+}
+.player .main .seekbar input[type="range"] {
+	-webkit-appearance:none;
+	width: 100%;
+	height: 4px;
+	outline: none;
+	background: #aaa;
+	overflow: hidden;
+}
+.player .main .seekbar input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance:none;
+	width: 0px;
+	height: 0px;
+	box-shadow: -300px 0px 0px 300px #00acee;
+}
+.player .main .details {
+	text-align: center;
+	padding: 15px 0px;
+}
+.player .main .details h2 {
+	font-size: 18px;
+	color:#eee;
+	margin-bottom: 5px;
+}
+.player .main .details p {
+	font-size: 15px;
+	color: #aaa;
+}
+.player .main .controls {
+	display: flex;
+	justify-content: center;
+	margin:8px 0px;
+}
+.player .main .controls > div {
+	margin:0px 30px;
+	cursor: pointer;
+}
+.player .main .controls i.fa {
+	font-size:25px;
+	color: #ddd;
+}
+.player .main .controls > div.play-pause-control i.fa-play {
+	display: none;
+}
+.player .main .controls > div.play-pause-control.paused i.fa-play {
+	display: block;
+}
+.player .main .controls > div.play-pause-control.paused i.fa-pause {
+	display: none;
+}
+.player .player-list {
+	position: absolute;
+	width: 100%;
+	margin-top:-20px;
+	height: 350px;
+	overflow-y: scroll;
+	background: rgba(0,0,0,0.8);
+	z-index:2;
+	transition:all 500ms ease-in-out;
+}
+.player .player-list .toggle-list {
+	position: sticky;
+	top:0px;
+	text-align: center;
+	height: 20px;
+	line-height: 20px;
+	background: #555;
+}
+.player .player-list .toggle-list i.fa {
+	color: #ccc;
+	font-size: 20px;
+	font-weight: 600;
+}
+.player .player-list .toggle-list i.fa-angle-down {
+	display: none;
+}
+.player .player-list .toggle-list.active i.fa-angle-up {
+	display: block;
+}
+.player .player-list .toggle-list.active i.fa-angle-down {
+	display: none;
+}
+.player .list {
+	padding: 10px;
+}
+.player .list .item {
+	display: flex;
+	padding: 5px 0px;
+	border-bottom: 1px solid #222;
+	cursor: pointer;
+}
+.player .list .item .thumbnail {
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+}
+.player .list .thumbnail img {
+	width: 100%;
+	height: 100%;
+}
+.player .list .item .details {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0px 10px;
+}
+.player .list .item .details h2 {
+	color: #eee;
+	font-size: 16px;
+}
+.player .list .item .details p {
+	color: #aaa;
+	font-size: 15px;
+}
+.player .player-list::-webkit-scrollbar {
+	width: 5px;
+	background: #222;
+}
+.player .player-list::-webkit-scrollbar-thumb {
+	background: #00acee;
+}
+.player.activeSongList .player-list {
+	margin-top: -350px;
+}
+.player.activeSongList .main {
+	filter:blur(5px);
+}
+
+/*---------------------Footer-------------------*/
+
+footer{
+	background-color: #111;
+	position:sticky;
+	bottom: 0;
+	left:0;
+	width: 100%;
+	top: 100%;
+}
+
+.footerContainer{
+	width: 100%;
+	padding: 10px 30px 1px;
+}
+.soicons{
+	display: flex;
+	justify-content: center;
+	
+}
+.soicons a{
+	text-decoration: none;
+	padding: 10px;
+	background-color: white;
+	margin:10px;
+	border-radius: 50%;
+	
+}
+
+.soicons a i{
+	font-size: 2em;
+	color: black;
+	opacity:0.9;
+}
+/*Footer Hover Effect*/
+
+.soicons a:hover{
+	background-color: #111;
+	transition: 0.5s;
+}
+.soicons a:hover i{
+	color:white;
+	transition:0.5s;
+}
+
+.footerBottom{
+	background-color: #000;
+	padding: 20px;
+	text-align: center;
+}
+.footerBottom p{
+	color:white;
+}
+
+.designer{
+	opacity: 0.7;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+	margin: 0px 5px;
+}
